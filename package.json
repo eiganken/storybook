@@ -8,6 +8,7 @@
     "dev": "next dev",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "create": "cp -r .template/components components/${npm_config_unit}/${npm_config_name} && sed -i -e \"s/SomeComponent/${npm_config_name}/\" components/${npm_config_unit}/${npm_config_name}/*"
   },
   "devDependencies": {
