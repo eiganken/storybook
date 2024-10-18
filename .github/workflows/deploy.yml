@@ -1,0 +1,25 @@
+name: deploy-storybook
+
+on:
+  push:
+    branches:
+      - "main"
+
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@4
+
+        - name: Build Storybook
+          run: "pnpm i && pnpm storybook:build"
+
+        - name: Deploy Storybook
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ${{ github.workspace }}/packages/ui/storybook-static
+            user_name: github-actions[bot]
+            user_email: 41898282+github-actions[bot]@users.noreply.github.com
+            commit_message: Deployed Storybook
